@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 125af45e5ca92104c9762a70b8f51e9b
+guid: 8078032de75cae0439349d0c65755b56
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -108,7 +108,70 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: animated_treadmill_0
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 13
+        width: 20
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c69369fca2a1c14e97da4596193fc37
+      internalID: 1703381432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animated_treadmill_1
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 13
+        width: 20
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 226afc140baa4f447a1710b7d113cfd4
+      internalID: -77678980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animated_treadmill_2
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 13
+        width: 20
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 063da68673ec8df45b9d0f37ab7e0bb9
+      internalID: 1983653116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -119,7 +182,10 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      animated_treadmill_0: 1703381432
+      animated_treadmill_1: -77678980
+      animated_treadmill_2: 1983653116
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
