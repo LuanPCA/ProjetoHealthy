@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3670,15 +3669,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   profile: {fileID: -643129796, guid: 7f3698e287e978cbcb45e173ed80702a, type: 3}
   speech:
-  - a
-  - b
-  - c
+  - "Voc\xEA teve muita sorte de perceber os sinais a tempo. Esse susto \xE9 um alerta
+    importante, mas tamb\xE9m uma oportunidade."
+  - "Esse problema n\xE3o \xE9 simples, \xE9 multifatorial. Envolve h\xE1bitos, cultura,
+    sociedade, e o tempo que dedicamos \xE0 nossa sa\xFAde. Mas a boa not\xEDcia
+    \xE9 que mudan\xE7as graduais podem ter um impacto enorme."
+  - "E \xE9 compreens\xEDvel se sentir assim. O importante agora \xE9 focar no que
+    est\xE1 ao seu alcance. Por exemplo, come\xE7ar a caminhar para o trabalho \xE9
+    uma \xF3tima decis\xE3o. \xC9 um pequeno ajuste que vai fazer uma grande diferen\xE7a."
   - 
   actorName: Doutor
   radius: 0.8
   playerLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 0
+  dc: {fileID: 0}
 --- !u!1 &1915664934
 GameObject:
   m_ObjectHideFlags: 0
@@ -3768,6 +3773,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1936121272}
   - component: {fileID: 1936121271}
+  - component: {fileID: 1936121273}
+  - component: {fileID: 1936121274}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -3815,7 +3822,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -1273171399, guid: 1921cc4fd2bbb4c1e8814137f5376333, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3836,12 +3843,52 @@ Transform:
   m_GameObject: {fileID: 1936121270}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.73, y: 1.28, z: 0}
+  m_LocalPosition: {x: -2.73, y: 0.11, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1936121273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1936121270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e9388e7a19a8df42984dd52caa47475, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+--- !u!50 &1936121274
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1936121270}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
