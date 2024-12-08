@@ -14,6 +14,10 @@ public class PlayerInteraction : MonoBehaviour
     public GameObject telaPreta;            // Referência à tela preta (Image)
     public TextMeshProUGUI textoTelaPreta;  // Referência ao texto que será exibido após a tela preta
     public float tempoTelaPreta = 3f;       // Tempo que a tela preta ficará visível (em segundos)
+    private bool interagindo = false; // Controle se o jogador está interagindo
+    public Player player;  // Referência ao script do jogador
+
+
 
     // Referências para o diálogo
     public GameObject painelDialogo;        // Painel de diálogo
@@ -40,18 +44,32 @@ public class PlayerInteraction : MonoBehaviour
         textoTelaPreta.gameObject.SetActive(false);
         painelDialogo.SetActive(false); // O painel de diálogo também começa desativado
         painelEscolhaFinal.SetActive(false); // Esconde o painel final de escolha
+
+        // Atribui a referência ao jogador e verifica
+        player = GameObject.FindWithTag("Player").GetComponent<Player>();
+
+        if (player == null)
+        {
+            Debug.LogError("A referência ao jogador não foi encontrada!");
+        }
+        else
+        {
+            Debug.Log("Referência ao jogador atribuída com sucesso!");
+        }
     }
 
     void Update()
     {
-        if (objetoProximo != null) // Se o jogador estiver perto de um objeto interativo
+        if (objetoProximo != null && !interagindo) // Se há objeto próximo e não está interagindo
         {
             textoInteracao.gameObject.SetActive(true);  // Exibe o texto de interação
-            textoInteracao.text = "Pressione 'E' para interagir";  // Altera o texto exibido
+            textoInteracao.text = "Pressione 'E' para interagir";  // Define o texto
 
             if (Input.GetKeyDown(KeyCode.E))  // Se pressionar 'E'
             {
-                MostrarPainelEscolha();  // Mostra o painel com os botões
+                interagindo = true; // Marca que o jogador está interagindo
+                MostrarPainelEscolha();  // Mostra o painel de escolha
+                textoInteracao.gameObject.SetActive(false); // Esconde o texto de interação
             }
         }
         else
@@ -65,6 +83,7 @@ public class PlayerInteraction : MonoBehaviour
             painelDialogo.SetActive(false);  // Esconde o painel de diálogo
         }
     }
+
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -87,6 +106,10 @@ public class PlayerInteraction : MonoBehaviour
         // Exibe o painel de escolha com os botões
         painelEscolha.SetActive(true);
 
+        // Remove todos os event listeners dos botões para evitar duplicação
+        botaoFazer.onClick.RemoveAllListeners();
+        botaoSair.onClick.RemoveAllListeners();
+
         // Ativa as funções para os botões
         botaoFazer.onClick.AddListener(FazerInteracao);
         botaoSair.onClick.AddListener(SairInteracao);
@@ -107,12 +130,11 @@ public class PlayerInteraction : MonoBehaviour
 
     void SairInteracao()
     {
-        // Lógica para quando o jogador escolhe "Sair"
         Debug.Log("Saindo da interação");
-
-        // Fechar o painel de escolha
         painelEscolha.SetActive(false);
+        interagindo = false; // Permite que a interação futura exiba o texto novamente
     }
+
 
     IEnumerator ExibirTextoDepoisDaTelaPreta()
     {
@@ -136,12 +158,20 @@ public class PlayerInteraction : MonoBehaviour
 
     IEnumerator ExibirDialogo()
     {
-        // Cada linha de diálogo será exibida com uma pausa entre palavras
+        string[] dialogo = new string[]
+        {
+            "(Ofegante, enquanto descansa após um exercício).......huf.......huf.............huf..........huf..........huf",
+            "Nunca pensei que subir numa esteira pudesse ser tão... revelador. A cada passo, parece que estou deixando para trás aquele cara que eu costumava ser... aquele que sempre escolhia o caminho mais fácil.",
+            "Mas é difícil... Meu corpo dói, minha mente grita pra parar.",
+            "(pausa curta, respirando fundo)..............uf....................huf..................",
+            "Mas... eu não sei se tenho forças para continuar..."
+        };
+
         foreach (string frase in dialogo)
         {
-            textoDialogo.text = ""; // Limpa o texto a cada nova frase
+            textoDialogo.text = ""; // Limpa o texto para a nova frase
 
-            // Exibe a frase palavra por palavra
+            // Exibe a frase letra por letra
             foreach (char letra in frase)
             {
                 textoDialogo.text += letra;
@@ -155,10 +185,16 @@ public class PlayerInteraction : MonoBehaviour
         // Após o diálogo, ativa o painel de escolha final
         painelEscolhaFinal.SetActive(true);
 
-        // Ativa as funções para os botões
+        // Remove event listeners duplicados e adiciona novos
+        botaoContinuar.onClick.RemoveAllListeners();
+        botaoSairFinal.onClick.RemoveAllListeners();
+
         botaoContinuar.onClick.AddListener(ContinuarJogo);
         botaoSairFinal.onClick.AddListener(SairJogo);
     }
+
+
+
 
     void ContinuarJogo()
     {
@@ -175,17 +211,12 @@ public class PlayerInteraction : MonoBehaviour
 
     void SairJogo()
     {
-        // Lógica para sair do jogo
         Debug.Log("Saindo do jogo...");
-
-        // Fecha o jogo ou volta para o menu principal
-        // Exemplo: Application.Quit(); (no modo de produção)
-        // Ou carrega uma cena de menu
-        // Exemplo: SceneManager.LoadScene("MenuPrincipal");
-
-        // Esconde o painel de escolha final
         painelEscolhaFinal.SetActive(false);
+        painelDialogo.SetActive(false);
+        interagindo = false; // Permite que a interação futura exiba o texto novamente
     }
+
 
     IEnumerator ExibirDialogoContinuar()
     {
@@ -193,8 +224,9 @@ public class PlayerInteraction : MonoBehaviour
         string[] dialogoNovaFala = new string[]
         {
             "Mas sabe... o médico tinha razão. Cada gota de suor aqui é um lembrete de que eu estou vivo, que eu ainda tenho uma chance de mudar tudo.",
-            "(olhando ao redor, vendo outras pessoas treinando)",
-            "Todos têm suas batalhas, assim como eu. Talvez a diferença seja que, dessa vez, eu não vou desistir. Não posso desistir. Minha vida depende disso."
+            "(Olhando ao redor, vendo outras pessoas treinando)...",
+            "Todos têm suas batalhas, assim como eu. Talvez a diferença seja que, dessa vez, eu não vou desistir. Não posso desistir. Minha vida depende disso.",
+            "Pressione 'Enter' para continuar."
         };
 
         // Cada linha de diálogo será exibida com uma pausa entre palavras
@@ -215,8 +247,7 @@ public class PlayerInteraction : MonoBehaviour
 
         // Após o diálogo de continuar, o diálogo está completo
         terminouDialogo = true;
+        player.RecuperarVida(20);  // Recupera 20 de vida ao final do último diálogo
 
-        // Avisa o jogador para pressionar Enter para esconder a caixa de diálogo
-        textoDialogo.text += "\n\nPressione 'Enter' para continuar.";
     }
 }
