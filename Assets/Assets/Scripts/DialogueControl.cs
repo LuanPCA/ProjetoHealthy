@@ -16,8 +16,11 @@ public class DialogueControl : MonoBehaviour
     public float typingSpeed; 
     private string[] sentences;
     private int index;
+    private bool isTyping = false;
+
 
     public void Speech(Sprite p, string[] txt, string actorName){
+        Debug.Log($"Recebendo {txt.Length} frases para exibir");
         dialogueObj.SetActive(true);
         profile.sprite = p;
         sentences = txt;
@@ -26,15 +29,19 @@ public class DialogueControl : MonoBehaviour
     }
 
     IEnumerator TypeSentence(){
+        isTyping = true;
         foreach (char letter in sentences[index].ToCharArray()){
             speech.text += letter;
             yield return new WaitForSeconds(typingSpeed);
         }
 
+        isTyping = false;
+
     }
 
     public void NextSentence(){
-        if(speech.text == sentences[index]){
+        Debug.Log("Botão clicado");
+        if(!isTyping && speech.text == sentences[index]){
             //Ainda tem textos
             if(index < sentences.Length -1){
                 index++;
@@ -47,6 +54,8 @@ public class DialogueControl : MonoBehaviour
                 index = 0;
                 dialogueObj.SetActive(false);
             }
+        } else if (isTyping) {
+            Debug.Log("Texto ainda está sendo digitado!");
         }
     }
 
