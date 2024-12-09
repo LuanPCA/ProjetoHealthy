@@ -2673,7 +2673,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 477bba9ed4720dd4a81ccbc4399c090d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nomeDoLevelDeJogo: Office
+  nomeDoLevelDeJogo: CopiaHospital
   painelMenuInicial: {fileID: 1223404925}
   painelOpcoes: {fileID: 2064534763}
 --- !u!4 &2011833373

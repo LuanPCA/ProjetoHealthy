@@ -1266,7 +1266,7 @@ Transform:
   m_GameObject: {fileID: 650134470}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -17.12, y: -9.75, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8159,8 +8159,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 312e20670b769e646aa849b7d23dbd4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: Exterior
-  playerStartPosition: {x: 6.33, y: -14.35, z: 0}
+  sceneToLoad: Exterior 1
+  playerStartPosition: {x: -3.2, y: -12.26, z: 0}
 --- !u!61 &1946341324
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8853,9 +8853,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5913432768918484, guid: 05eca67391ed0f542b149c70f3795684, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 654423166796606473, guid: 05eca67391ed0f542b149c70f3795684, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1162535792553752695, guid: 05eca67391ed0f542b149c70f3795684, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1162535792553752695, guid: 05eca67391ed0f542b149c70f3795684, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1162535792553752695, guid: 05eca67391ed0f542b149c70f3795684, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1162535792553752695, guid: 05eca67391ed0f542b149c70f3795684, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7356351437553766580, guid: 05eca67391ed0f542b149c70f3795684, type: 3}
       propertyPath: m_LocalPosition.x

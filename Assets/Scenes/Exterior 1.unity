@@ -1255,8 +1255,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 312e20670b769e646aa849b7d23dbd4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: AcademiaScene
-  playerStartPosition: {x: 0.634, y: -1.106, z: 0}
+  sceneToLoad: GoldGym 1
+  playerStartPosition: {x: 0.63, y: -1, z: 0}
 --- !u!1 &375624674
 GameObject:
   m_ObjectHideFlags: 0
@@ -1424,8 +1424,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 312e20670b769e646aa849b7d23dbd4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: Cenario_Casa
-  playerStartPosition: {x: 0.99, y: -3.27, z: 0}
+  sceneToLoad: Cenario_Casa 2
+  playerStartPosition: {x: 1.16, y: -2.59, z: 0}
 --- !u!1 &557455234
 GameObject:
   m_ObjectHideFlags: 0
@@ -3472,8 +3472,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 312e20670b769e646aa849b7d23dbd4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: SampleScene
-  playerStartPosition: {x: 0, y: 0, z: 0}
+  sceneToLoad: CopiaHospital
+  playerStartPosition: {x: 1.01, y: -2.35, z: 0}
 --- !u!61 &823081018
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3652,7 +3652,6 @@ GameObject:
   - component: {fileID: 910667350}
   - component: {fileID: 910667349}
   - component: {fileID: 910667351}
-  - component: {fileID: 910667352}
   m_Layer: 0
   m_Name: Carros
   m_TagString: Untagged
@@ -4598,20 +4597,6 @@ TilemapCollider2D:
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
---- !u!114 &910667352
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 910667347}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 312e20670b769e646aa849b7d23dbd4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneToLoad: Office
-  playerStartPosition: {x: -3.07, y: -6.87, z: 0}
 --- !u!1 &929760920
 GameObject:
   m_ObjectHideFlags: 0
@@ -5145,7 +5130,7 @@ Transform:
   m_GameObject: {fileID: 1029256737}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.9, y: -0, z: -10}
+  m_LocalPosition: {x: -0.9, y: -0.1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5303,7 +5288,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 6
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -10191,7 +10176,7 @@ Transform:
   m_GameObject: {fileID: 1476103969}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -32.96, y: -17.52, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -40343,12 +40328,20 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 1162535792553752695, guid: 05eca67391ed0f542b149c70f3795684, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1162535792553752695, guid: 05eca67391ed0f542b149c70f3795684, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1162535792553752695, guid: 05eca67391ed0f542b149c70f3795684, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.62
+      value: -3.26
       objectReference: {fileID: 0}
     - target: {fileID: 1162535792553752695, guid: 05eca67391ed0f542b149c70f3795684, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.55
+      value: 0.69
       objectReference: {fileID: 0}
     - target: {fileID: 1162535792553752695, guid: 05eca67391ed0f542b149c70f3795684, type: 3}
       propertyPath: m_LocalRotation.x
