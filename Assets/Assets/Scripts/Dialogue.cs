@@ -18,11 +18,11 @@ public class Dialogue : MonoBehaviour
 
    private void Start(){
     //dc = FindAnyObjectByType<DialogueControl>();
-
+   
    }
 
    private void FixedUpdate(){
-      Interact();
+    Interact();
 
    }
 
@@ -51,3 +51,5 @@ public class Dialogue : MonoBehaviour
       Gizmos.DrawWireSphere(transform.position, radius);
    }
 }
+
+//Input.GetKeyDown(KeyCode.Space)
