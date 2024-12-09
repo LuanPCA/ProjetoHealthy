@@ -927,7 +927,7 @@ GameObject:
   - component: {fileID: 490091053}
   m_Layer: 0
   m_Name: EntradaCasa
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1004,7 +1004,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 312e20670b769e646aa849b7d23dbd4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: Cenario_Casa
+  sceneToLoad: Cenario_Casa 1
   playerStartPosition: {x: 0.99, y: -3.27, z: 0}
 --- !u!1 &751276871
 GameObject:
@@ -3745,7 +3745,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 6
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -8369,7 +8369,7 @@ Transform:
   m_GameObject: {fileID: 1476103969}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -32.38, y: -16.46, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -37889,6 +37889,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5913432768918484, guid: 05eca67391ed0f542b149c70f3795684, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 592946671681844785, guid: 05eca67391ed0f542b149c70f3795684, type: 3}
       propertyPath: m_SortingOrder
       value: 2
@@ -37898,12 +37902,20 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 1162535792553752695, guid: 05eca67391ed0f542b149c70f3795684, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.92190003
+      objectReference: {fileID: 0}
+    - target: {fileID: 1162535792553752695, guid: 05eca67391ed0f542b149c70f3795684, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.85126996
+      objectReference: {fileID: 0}
+    - target: {fileID: 1162535792553752695, guid: 05eca67391ed0f542b149c70f3795684, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.62
+      value: -2.5299
       objectReference: {fileID: 0}
     - target: {fileID: 1162535792553752695, guid: 05eca67391ed0f542b149c70f3795684, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.55
+      value: -2.446
       objectReference: {fileID: 0}
     - target: {fileID: 7356351437553766580, guid: 05eca67391ed0f542b149c70f3795684, type: 3}
       propertyPath: m_LocalPosition.x
