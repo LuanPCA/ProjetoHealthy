@@ -1,40 +1,41 @@
 using UnityEngine;
 using TMPro; // Para usar TextMesh Pro
-using UnityEngine.UI; // Para manipular UI e botões
+using UnityEngine.UI; // Para manipular UI e botï¿½es
 using System.Collections; // Para usar corrotinas
+using UnityEngine.SceneManagement;
 
 public class PlayerWalk : MonoBehaviour
 {
     public string objetoTag = "carro"; // Tag do objeto com o qual o player interage
-    public float distanciaInteracao = 1.5f; // Distância de interação
-    public TextMeshProUGUI textoInteracao;  // Referência ao TextMeshProUGUI (Texto da interação)
-    public GameObject painelEscolha;        // Referência ao painel com os botões
-    public Button botaoFazer;               // Referência ao botão "Fazer"
-    public Button botaoSair;                // Referência ao botão "Sair"
-    public GameObject telaPreta;            // Referência à tela preta (Image)
-    public TextMeshProUGUI textoTelaPreta;  // Referência ao texto que será exibido após a tela preta
-    public float tempoTelaPreta = 3f;       // Tempo que a tela preta ficará visível (em segundos)
-    private bool interagindo = false; // Controle se o jogador está interagindo
-    public Player player;  // Referência ao script do jogador
+    public float distanciaInteracao = 1.5f; // Distï¿½ncia de interaï¿½ï¿½o
+    public TextMeshProUGUI textoInteracao;  // Referï¿½ncia ao TextMeshProUGUI (Texto da interaï¿½ï¿½o)
+    public GameObject painelEscolha;        // Referï¿½ncia ao painel com os botï¿½es
+    public Button botaoFazer;               // Referï¿½ncia ao botï¿½o "Fazer"
+    public Button botaoSair;                // Referï¿½ncia ao botï¿½o "Sair"
+    public GameObject telaPreta;            // Referï¿½ncia ï¿½ tela preta (Image)
+    public TextMeshProUGUI textoTelaPreta;  // Referï¿½ncia ao texto que serï¿½ exibido apï¿½s a tela preta
+    public float tempoTelaPreta = 3f;       // Tempo que a tela preta ficarï¿½ visï¿½vel (em segundos)
+    private bool interagindo = false; // Controle se o jogador estï¿½ interagindo
+    public Player player;  // Referï¿½ncia ao script do jogador
 
 
 
-    // Referências para o diálogo
-    public GameObject painelDialogo;        // Painel de diálogo
-    public TextMeshProUGUI textoDialogo;    // Texto do diálogo
-    public float tempoEntrePalavras = 0.05f; // Tempo entre as palavras do diálogo
-    public string[] dialogo;                // Array de falas para o diálogo
+    // Referï¿½ncias para o diï¿½logo
+    public GameObject painelDialogo;        // Painel de diï¿½logo
+    public TextMeshProUGUI textoDialogo;    // Texto do diï¿½logo
+    public float tempoEntrePalavras = 0.05f; // Tempo entre as palavras do diï¿½logo
+    public string[] dialogo;                // Array de falas para o diï¿½logo
 
-    // Referências para o painel de escolha final
+    // Referï¿½ncias para o painel de escolha final
     public GameObject painelEscolhaFinal;   // Painel de escolha (Continuar ou Sair)
-    public Button botaoContinuar;           // Botão para continuar
-    public Button botaoSairFinal;           // Botão para sair
+    public Button botaoContinuar;           // Botï¿½o para continuar
+    public Button botaoSairFinal;           // Botï¿½o para sair
 
-    // Referências para o novo diálogo após continuar
-    public string[] dialogoContinuar;       // Array de falas após escolher continuar
+    // Referï¿½ncias para o novo diï¿½logo apï¿½s continuar
+    public string[] dialogoContinuar;       // Array de falas apï¿½s escolher continuar
 
     private GameObject objetoProximo;       // Objeto com o qual o jogador pode interagir
-    private bool terminouDialogo = false;   // Flag para indicar se o diálogo terminou
+    private bool terminouDialogo = false;   // Flag para indicar se o diï¿½logo terminou
 
     void Start()
     {
@@ -42,33 +43,33 @@ public class PlayerWalk : MonoBehaviour
         painelEscolha.SetActive(false);
         telaPreta.SetActive(false);
         textoTelaPreta.gameObject.SetActive(false);
-        painelDialogo.SetActive(false); // O painel de diálogo também começa desativado
+        painelDialogo.SetActive(false); // O painel de diï¿½logo tambï¿½m comeï¿½a desativado
         painelEscolhaFinal.SetActive(false); // Esconde o painel final de escolha
 
-        // Atribui a referência ao jogador e verifica
+        // Atribui a referï¿½ncia ao jogador e verifica
         player = GameObject.FindWithTag("Player").GetComponent<Player>();
 
         if (player == null)
         {
-            Debug.LogError("A referência ao jogador não foi encontrada!");
+            Debug.LogError("A referï¿½ncia ao jogador nï¿½o foi encontrada!");
         }
         else
         {
-            Debug.Log("Referência ao jogador atribuída com sucesso!");
+            Debug.Log("Referï¿½ncia ao jogador atribuï¿½da com sucesso!");
         }
     }
 
     void Update()
     {
-        if (objetoProximo != null && !interagindo) // Se há objeto próximo e não está interagindo
+        if (objetoProximo != null && !interagindo) // Se hï¿½ objeto prï¿½ximo e nï¿½o estï¿½ interagindo
         {
-            textoInteracao.gameObject.SetActive(true);  // Exibe o texto de interação
+            textoInteracao.gameObject.SetActive(true);  // Exibe o texto de interaï¿½ï¿½o
             textoInteracao.text = "Pressione 'E' para interagir";  // Define o texto
 
             if (Input.GetKeyDown(KeyCode.E))  // Se pressionar 'E'
             {
-                interagindo = true; // Marca que o jogador está interagindo
-                textoInteracao.gameObject.SetActive(false); // Esconde o texto de interação
+                interagindo = true; // Marca que o jogador estï¿½ interagindo
+                textoInteracao.gameObject.SetActive(false); // Esconde o texto de interaï¿½ï¿½o
                 painelDialogo.SetActive(true);
                 StartCoroutine(ExibirDialogoContinuar());
 
@@ -76,13 +77,13 @@ public class PlayerWalk : MonoBehaviour
         }
         else
         {
-            textoInteracao.gameObject.SetActive(false); // Esconde o texto quando não há interação
+            textoInteracao.gameObject.SetActive(false); // Esconde o texto quando nï¿½o hï¿½ interaï¿½ï¿½o
         }
 
-        // Se o diálogo terminou e o jogador apertar "Enter", esconder o painel de diálogo
+        // Se o diï¿½logo terminou e o jogador apertar "Enter", esconder o painel de diï¿½logo
         if (terminouDialogo && Input.GetKeyDown(KeyCode.Return))
         {
-            painelDialogo.SetActive(false);  // Esconde o painel de diálogo
+            painelDialogo.SetActive(false);  // Esconde o painel de diï¿½logo
         }
     }
 
@@ -97,7 +98,7 @@ public class PlayerWalk : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag(objetoTag)) // Se o player sai da área de interação
+        if (other.CompareTag(objetoTag)) // Se o player sai da ï¿½rea de interaï¿½ï¿½o
         {
             objetoProximo = null;
         }
@@ -105,18 +106,18 @@ public class PlayerWalk : MonoBehaviour
 
     IEnumerator ExibirDialogoContinuar()
     {
-        // Nova fala após continuar
+        // Nova fala apï¿½s continuar
         string[] dialogoNovaFala = new string[]
         {
-            "(O personagem observa o carro estacionado e olha para a rua que leva ao escritório)",
+            "(O personagem observa o carro estacionado e olha para a rua que leva ao escritÃ³rio)",
             "Por que eu nunca pensei nisso antes? Sempre corro para o carro, como se cada minuto fosse uma corrida contra o tempo...",
-            "Mas, no fim das contas, para onde essa pressa está me levando?",
-            "Depois do que o médico disse, acho que está claro que continuar assim só me empurra para um buraco mais fundo",
-            "Caminhar... parece tão simples, quase banal, mas talvez seja um pequeno passo para uma grande mudança. Algo que meu corpo e minha mente realmente precisam agora",
-            "Será que é hora de começar a fazer escolhas diferentes?"
+            "Mas, no fim das contas, para onde essa pressa esta me levando?",
+            "Depois do que o mÃ©dico disse, acho que estÃ¡ claro que continuar assim sÃ³ me empurra para um buraco mais fundo",
+            "Caminhar... parece tÃ£o simples, quase banal, mas talvez seja um pequeno passo para uma grande mudanÃ§a. Algo que meu corpo e minha mente realmente precisam agora",
+            "SerÃ¡ que Ã© hora de comeÃ§ar a fazer escolhas diferentes?"
         };
 
-        // Cada linha de diálogo será exibida com uma pausa entre palavras
+        // Cada linha de diï¿½logo serï¿½ exibida com uma pausa entre palavras
         foreach (string frase in dialogoNovaFala)
         {
             textoDialogo.text = ""; // Limpa o texto a cada nova frase
@@ -139,62 +140,62 @@ public class PlayerWalk : MonoBehaviour
 
     void MostrarPainelEscolha()
     {
-        // Exibe o painel de escolha com os botões
+        // Exibe o painel de escolha com os botï¿½es
         painelEscolha.SetActive(true);
 
-        // Remove todos os event listeners dos botões para evitar duplicação
+        // Remove todos os event listeners dos botï¿½es para evitar duplicaï¿½ï¿½o
         botaoFazer.onClick.RemoveAllListeners();
         botaoSair.onClick.RemoveAllListeners();
 
-        // Ativa as funções para os botões
+        // Ativa as funï¿½ï¿½es para os botï¿½es
         botaoFazer.onClick.AddListener(CarroInteracao);
         botaoSair.onClick.AddListener(CaminharInteracao);
     }
 
     void CarroInteracao()
-    {
-        painelDialogo.SetActive(false);
+{
+    painelDialogo.SetActive(false);
 
-        // Lógica para quando o jogador escolhe "Fazer"
-        Debug.Log("Fazendo interação com " + objetoProximo.name);
+    // LÃ³gica para quando o jogador escolhe "Fazer"
+    Debug.Log("Fazendo interaÃ§Ã£o com " + objetoProximo.name);
 
-        // Esconde o painel de escolha e exibe a tela preta
-        painelEscolha.SetActive(false);
-        telaPreta.SetActive(true);
+    // Esconde o painel de escolha e exibe a tela preta
+    painelEscolha.SetActive(false);
+    telaPreta.SetActive(true);
 
-        // Inicia a corrotina para exibir a tela preta por alguns segundos
-        StartCoroutine(ExibirTextoDepoisDaTelaPreta());
-    }
+    // Inicia a corrotina para exibir a tela preta por alguns segundos
+    StartCoroutine(ExibirTextoDepoisDaTelaPreta());
+}
 
-    void CaminharInteracao()
-    {
-        painelEscolha.SetActive(false);
-        painelDialogo.SetActive(false);
-        telaPreta.SetActive(true);
-        StartCoroutine(ExibirTextoDepoisDaTelaPreta());
+void CaminharInteracao()
+{
+    painelEscolha.SetActive(false);
+    painelDialogo.SetActive(false);
+    telaPreta.SetActive(true);
+    StartCoroutine(ExibirTextoDepoisDaTelaPreta());
 
-        Debug.Log("Saindo da interação");
-        interagindo = false; // Permite que a interação futura exiba o texto novamente
-        player.RecuperarVida(20);
-    }
+    Debug.Log("Saindo da interaÃ§Ã£o");
+    interagindo = false; // Permite que a interaÃ§Ã£o futura exiba o texto novamente
+    player.RecuperarVida(20);
+}
 
+IEnumerator ExibirTextoDepoisDaTelaPreta()
+{
+    // Espera o tempo da tela preta
+    yield return new WaitForSeconds(tempoTelaPreta);
 
-    IEnumerator ExibirTextoDepoisDaTelaPreta()
-    {
-        // Espera o tempo da tela preta
-        yield return new WaitForSeconds(tempoTelaPreta);
+    // ApÃ³s o tempo, exibe o texto
+    textoTelaPreta.gameObject.SetActive(true);
+    textoTelaPreta.text = "Algum tempo depois...";
 
-        // Após o tempo, exibe o texto
-        textoTelaPreta.gameObject.SetActive(true);
-        textoTelaPreta.text = "Algum tempo depois...";
+    // Espera 3 segundos com o texto exibido
+    yield return new WaitForSeconds(3f);
 
-        // Espera 3 segundos com o texto exibido
-        yield return new WaitForSeconds(3f);
+    // Esconde a tela preta e troca para a cena Office
+    telaPreta.SetActive(false);
+    SceneManager.LoadScene("Office");
+}
 
-        // Esconde a tela preta e começa o diálogo
-        telaPreta.SetActive(false);
-
-    }
 
     
 }
