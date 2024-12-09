@@ -1,6 +1,6 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class DialogueController : MonoBehaviour
 {
@@ -15,9 +15,24 @@ public class DialogueController : MonoBehaviour
     public Button opcao1Button;
     public Button opcao2Button;
 
+    [Header("Barra de Vida")]
+    public Slider healthBar;
+    public float maxHealth = 100f;
+    private float currentHealth;
+
+    public Player player;
+    private bool playerLife = false;
     private string[] sentences;
     private int index;
     private bool dialogoTerminado = false;
+
+    private void Start()
+    {
+        // Inicializa a barra de vida
+        player = GameObject.FindWithTag("Player").GetComponent<Player>();
+        healthBar.value = currentHealth;
+        
+    }
 
     public void Speech(string[] text)
     {
@@ -31,7 +46,6 @@ public class DialogueController : MonoBehaviour
 
     private IEnumerator TypeSentence()
     {
-        // Digita cada frase letra por letra
         foreach (char letter in sentences[index].ToCharArray())
         {
             speechText.text += letter;
@@ -41,7 +55,7 @@ public class DialogueController : MonoBehaviour
 
     public void NextSentence()
     {
-        if (speechText.text == sentences[index]) // Verifica se o texto atual foi digitado por completo
+        if (speechText.text == sentences[index]) 
         {
             if (index < sentences.Length - 1)
             {
@@ -51,15 +65,14 @@ public class DialogueController : MonoBehaviour
             }
             else
             {
-                // Diálogo completo, mostra as opções
                 dialogoTerminado = true;
                 ExibirOpcoes();
             }
         }
         else
         {
-            StopAllCoroutines(); // Cancela a digitação em andamento
-            speechText.text = sentences[index]; // Mostra o texto completo da frase atual
+            StopAllCoroutines(); 
+            speechText.text = sentences[index];
         }
     }
 
@@ -79,15 +92,26 @@ public class DialogueController : MonoBehaviour
 
     private void OpcaoRapida()
     {
-        Debug.Log("Opção Rápida selecionada!");
+        
+        Debug.Log("Opção Saudavel selecionada!");
+       
+        if (playerLife == false)
+        {
+            player.RecuperarVida(20);
+            playerLife = true;
+        }
         FecharDialogo();
     }
 
     private void OpcaoSaudavel()
     {
-        Debug.Log("Opção Saudável selecionada!");
+        
+        Debug.Log("Opção Rapida selecionada!");
+       
         FecharDialogo();
     }
+
+    
 
     private void FecharDialogo()
     {
@@ -101,4 +125,6 @@ public class DialogueController : MonoBehaviour
         dialogoTerminado = false;
         speechText.text = "";
     }
+    
+    
 }
